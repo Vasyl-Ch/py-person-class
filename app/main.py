@@ -8,10 +8,9 @@ class Person:
 
 
 def create_person_list(people_data: list[dict]) -> list[Person]:
-    [Person(person_dict["name"], person_dict["age"])
-     for person_dict in people_data]
+    person_list = [Person(person_dict["name"], person_dict["age"])
+                   for person_dict in people_data]
 
-    person_list = []
     for person_dict in people_data:
         person_instance = Person.people[person_dict["name"]]
 
@@ -24,7 +23,5 @@ def create_person_list(people_data: list[dict]) -> list[Person]:
                 person_instance.wife = spouse_instance
             elif person_dict.get("husband"):
                 person_instance.husband = spouse_instance
-
-        person_list.append(person_instance)
 
     return person_list
